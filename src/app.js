@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import TopShowsPage from "./pages/TopShowsPage";
 import ShowInfoPage from "./pages/ShowInfoPage";
