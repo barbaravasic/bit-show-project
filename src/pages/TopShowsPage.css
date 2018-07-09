@@ -8,3 +8,10 @@ h1{
     margin: 50px auto;
 }
 
+.show {
+    margin: 20px 0;
+}
+
+.show a {
+    color: rgb(48, 46, 46);
+}

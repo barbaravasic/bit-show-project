@@ -7,7 +7,6 @@ const SearchDropdown = (props) => {
     const filterShows = () => {
         const { shows, searchInput } = props;
         if (shows) {
-
             const listOfSearchedSuggestions = [];
             shows.forEach(show => {
                 const lowerCasedName = show.name.toLowerCase();
@@ -33,7 +32,7 @@ const SearchDropdown = (props) => {
                         {shows.map((show, index) => {
                             return (
                                 <li key={index}>
-                                    <Link to={`/shows/${show.id}`} >{show.name}</Link>
+                                    <Link to={`/shows/${show.id}`} onClick={props.clearSearchInput}>{show.name}</Link>
                                 </li>
                             )
                         })}
@@ -46,7 +45,6 @@ const SearchDropdown = (props) => {
     }
 
     return (
-
         <React.Fragment>
             {renderShowsDropdown()}
         </React.Fragment>
