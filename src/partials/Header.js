@@ -1,5 +1,7 @@
 import React from 'react';
-import SearchShows from '../components/SearchShows'
+import SearchShows from '../components/SearchShows';
+
+import './Header.css'
 
 const Header = () => {
     return (

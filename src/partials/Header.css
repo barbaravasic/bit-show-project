@@ -1,0 +1,29 @@
+a:not([href]):not([tabindex]){
+    color: white;
+}
+
+.form-inline{
+    display: flex;
+    position: relative;
+}
+
+.search-dropdown {
+    display: block;
+    position: absolute;
+    top: 40px;
+    border: 1px solid grey;
+    z-index: 5;
+    padding: 25px;
+    background-color: white;
+    width: 96%;
+}
+
+.dropdown-ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.dropdown-ul li a {
+    color: black;
+}
+

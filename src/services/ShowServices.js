@@ -62,26 +62,18 @@ class ShowServices {
             
         }
 
-        getSearchShows(searchValue) {
+        getAllShows() {
             return fetch(shows)
                 .then(response => {
                     return response.json()
                 })
                 .then(myResponse => {
                     const listOfAllShows = [];
-                    const listOfSearchedSuggestions = [];
                     myResponse.map(show => {
                         const createdShow = new Show(show.name, show.id, show.image.original, show.summary, show.rating);
                         listOfAllShows.push(createdShow);
                     })
-                    listOfAllShows.forEach(show => {
-                        const lowerCasedName = show.name.toLowerCase();
-                        if (lowerCasedName.includes(searchValue)) {
-                            listOfSearchedSuggestions.push(show);
-                        }
-                    })
-                    const slicedList = listOfSearchedSuggestions.slice(0, 10);
-                    return slicedList;
+                    return listOfAllShows;
                 })
             }
     }
