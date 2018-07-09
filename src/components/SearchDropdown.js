@@ -20,15 +20,11 @@ const SearchDropdown = (props) => {
 
 
     const renderShowsDropdown = () => {
-        console.log(props.hide);
-        console.log(shows);
         const shows = filterShows();
         if (shows && props.searchInput !== "") {
             return (
                 <div className={`search-dropdown`}>
-
                     <ul className="dropdown-ul">
-
                         {shows.map((show, index) => {
                             return (
                                 <li key={index}>

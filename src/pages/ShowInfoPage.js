@@ -14,6 +14,19 @@ class ShowInfoPage extends Component {
         }
     }
 
+    
+    componentWillReceiveProps(nextProps) {
+        const id = nextProps.match.params.id;
+        showServices.getSeasonsAndCast(id)
+        .then(showInfoData => {
+            this.setState({
+                seasons: showInfoData.listOfSeasons,
+                actors: showInfoData.listOfActors,
+                clickedShow: showInfoData.clickedShow
+            })
+        })
+    }
+
     componentDidMount() {
         const id = this.props.match.params.id;
         showServices.getSeasonsAndCast(id)
