@@ -14,17 +14,17 @@ class ShowInfoPage extends Component {
         }
     }
 
-    
+
     componentWillReceiveProps(nextProps) {
         const id = nextProps.match.params.id;
         showServices.getSeasonsAndCast(id)
-        .then(showInfoData => {
-            this.setState({
-                seasons: showInfoData.listOfSeasons,
-                actors: showInfoData.listOfActors,
-                clickedShow: showInfoData.clickedShow
+            .then(showInfoData => {
+                this.setState({
+                    seasons: showInfoData.listOfSeasons,
+                    actors: showInfoData.listOfActors,
+                    clickedShow: showInfoData.clickedShow,
+                })
             })
-        })
     }
 
     componentDidMount() {
@@ -34,7 +34,7 @@ class ShowInfoPage extends Component {
                 this.setState({
                     seasons: showInfoData.listOfSeasons,
                     actors: showInfoData.listOfActors,
-                    clickedShow: showInfoData.clickedShow
+                    clickedShow: showInfoData.clickedShow,
                 })
             })
     }
@@ -56,7 +56,7 @@ class ShowInfoPage extends Component {
     }
 
     render() {
-        const { seasons, actors, clickedShow } = this.state;
+        const { seasons, clickedShow } = this.state;
         return (
             <div className='container'>
                 <div className='row poster-and-lists'>

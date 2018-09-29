@@ -20,7 +20,8 @@ class ShowServices {
             .then(myResponse => {
                 const listOfAllShows = [];
                 myResponse.map(show => {
-                    const createdShow = new Show(show.name, show.id, show.image.original, show.summary, show.rating);
+                    const description = show.summary.replace(/<[^>]+>/g, '');
+                    const createdShow = new Show(show.name, show.id, show.image.original, description, show.rating);
                     listOfAllShows.push(createdShow);
                 })
                 listOfAllShows.sort((a, b) => {
@@ -35,48 +36,50 @@ class ShowServices {
     }
 
     getSeasonsAndCast(id) {
-            return fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`)
-                .then(response => {
-                    return response.json();
+        return fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`)
+            .then(response => {
+                return response.json();
+            })
+            .then(myResponse => {
+                const listOfActors = [];
+                const listOfSeasons = [];
+                const seasonsArray = myResponse._embedded.seasons;
+                const castArray = myResponse._embedded.cast;
+                seasonsArray.map(item => {
+                    const createdSeason = new Season(item.premiereDate, item.endDate, item.length);
+                    listOfSeasons.push(createdSeason);
                 })
-        .then(myResponse => {
-            const listOfActors = [];
-                    const listOfSeasons = [];
-                    const seasonsArray = myResponse._embedded.seasons;
-                    const castArray = myResponse._embedded.cast;
-                    seasonsArray.map(item => {
-                        const createdSeason = new Season(item.premiereDate, item.endDate, item.length);
-                        listOfSeasons.push(createdSeason);
-                    })
-                    castArray.map(item => {
-                        const createdActor = new Actor(item.person.name);
-                        listOfActors.push(createdActor);
-                    })
-                    const clickedShow = new Show(myResponse.name, myResponse.id, myResponse.image.original, myResponse.summary, myResponse.rating.average);
-                    return {
-                        listOfActors,
-                        listOfSeasons,
-                        clickedShow
-                    }
+                castArray.map(item => {
+                    const createdActor = new Actor(item.person.name);
+                    listOfActors.push(createdActor);
                 })
-            
-        }
+                const description = myResponse.summary.replace(/<[^>]+>/g, '');
+                const clickedShow = new Show(myResponse.name, myResponse.id, myResponse.image.original, description, myResponse.rating.average);
+                return {
+                    listOfActors,
+                    listOfSeasons,
+                    clickedShow
+                }
+            })
 
-        getAllShows() {
-            return fetch(shows)
-                .then(response => {
-                    return response.json()
-                })
-                .then(myResponse => {
-                    const listOfAllShows = [];
-                    myResponse.map(show => {
-                        const createdShow = new Show(show.name, show.id, show.image.original, show.summary, show.rating);
-                        listOfAllShows.push(createdShow);
-                    })
-                    return listOfAllShows;
-                })
-            }
     }
+
+    getAllShows() {
+        return fetch(shows)
+            .then(response => {
+                return response.json()
+            })
+            .then(myResponse => {
+                const listOfAllShows = [];
+                myResponse.map(show => {
+                    const description = show.summary.replace(/<[^>]+>/g, '');
+                    const createdShow = new Show(show.name, show.id, show.image.original, description, show.rating);
+                    listOfAllShows.push(createdShow);
+                })
+                return listOfAllShows;
+            })
+    }
+}
 
 
 export const showServices = new ShowServices();
