@@ -1,6 +1,12 @@
 footer {
     background-color: #343A40;
     height: 50px;
+    font-size: 15px;
     color: white;
     line-height: 50px;
+    padding-left: 30px;
+}
+
+footer p{
+margin-bottom: 0;
 }

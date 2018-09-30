@@ -1,10 +1,15 @@
 .show-info-page{
     margin-top: 50px;
     background-color: white;
+    box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.75); 
     padding: 25px;
-    box-shadow: 6px 6px 20px 0px rgba(0,0,0,0.75); 
+}
+
+.poster{
+    padding: 25px;
 }
 
 .poster img{
     width: 100%;
+    box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.75); 
 }
