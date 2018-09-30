@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import TopShowsPage from "./pages/TopShowsPage/TopShowsPage";
-import ShowInfoPage from "./pages/ShowInfoPage/ShowInfoPage";
-import Header from "./partials/Header";
-import Footer from "./partials/Footer";
+import TopShowsPage from "../pages/TopShowsPage/TopShowsPage";
+import ShowInfoPage from "../pages/ShowInfoPage/ShowInfoPage";
+import Header from "../partials/Header/Header";
+import Footer from "../partials/Footer/Footer";
 
 import './app.css'
 

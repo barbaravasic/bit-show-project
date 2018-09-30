@@ -1,0 +1,9 @@
+.seasons{
+    margin: 20px 0 60px 0;
+    border-bottom: 1px solid #2F3B58;
+    padding-bottom: 60px;
+}
+
+.seasons h4{
+    font-family: 'Archivo Black', sans-serif;
+}

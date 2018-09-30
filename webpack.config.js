@@ -7,7 +7,7 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/view/App/App.js",
   output: {
     path: path.resolve('dist'),
     publicPath: "/",
