@@ -11,6 +11,14 @@ a:hover{
     cursor: pointer;
 }
 
+ul{
+    list-style-type: none;
+}
+
+ul li{
+    font-size: 14px;
+}
+
 #index{
     background-image: url('https://i.pinimg.com/564x/58/d5/37/58d537989b544a8b3535da3b6d1d6f07.jpg');
 }

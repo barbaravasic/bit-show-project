@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { showServices } from '../services/ShowServices';
-import TopShowsList from '../components/TopShowsList';
+import { showServices } from '../../services/ShowServices';
+import TopShowsList from '../../components/TopShowsList/TopShowsList';
 
 class TopShowsPage extends Component {
     constructor() {

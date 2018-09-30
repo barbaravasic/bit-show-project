@@ -1,5 +1,5 @@
 import React from 'react';
-import TopShowsItem from './TopShowsItem';
+import TopShowsItem from './TopShowsItem/TopShowsItem';
 
 import './TopShowsList.css'
 

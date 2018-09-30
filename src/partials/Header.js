@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchShows from '../components/SearchShows';
+import SearchShows from '../components/SearchShows/SearchShows';
 import { Link } from 'react-router-dom';
 
 

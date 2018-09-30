@@ -1,0 +1,10 @@
+.description h4{
+    margin-top: 50px;
+    font-family: 'Archivo Black', sans-serif;
+    text-align: center;
+}
+
+.description p{
+    width: 80%;
+    margin: 30px auto;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { showServices } from '../services/ShowServices'
-import SearchDropdown from './SearchDropdown';
+import { showServices } from '../../services/ShowServices'
+import SearchDropdown from '../SearchDropdown/SearchDropdown';
 
 import './SearchShows.css'
 
