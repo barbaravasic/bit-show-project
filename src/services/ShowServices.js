@@ -1,84 +1,84 @@
-import { shows } from "../shared/endpoints";
-import { Show } from "../entities/Show";
-import { Season } from "../entities/Season";
-import { Actor } from "../entities/Actor";
+import {
+    Show
+} from "../entities/Show";
+import {
+    Season
+} from "../entities/Season";
+import {
+    Actor
+} from "../entities/Actor";
+import {
+    httpService
+} from "./httpService";
+import {
+    ALL_SHOWS_URL
+} from "../shared/endpoints";
 
 class ShowServices {
+
+    getAllShows() {
+        return httpService.getData(ALL_SHOWS_URL)
+            .then(listOfAllShows => {
+                return listOfAllShows.map(({
+                    name,
+                    id,
+                    image,
+                    summary,
+                    rating
+                }) => {
+                    const description = summary.replace(/<[^>]+>/g, '');
+                    return new Show(name, id, image.original, description, rating);
+                })
+            })
+    }
+
+    filterTop50Shows(listOfAllShows) {
+        return listOfAllShows.sort((a, b) => {
+                a = a.rating.average;
+                b = b.rating.average;
+                return b - a;
+            })
+            .slice(0, 50)
+    }
 
     getTop50() {
         const localData = localStorage.getItem("topShows");
         if (localData) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 resolve(JSON.parse(localData));
             })
         }
-        return fetch(shows)
-            .then(response => {
 
-                return response.json();
-            })
-            .then(myResponse => {
-                const listOfAllShows = [];
-                myResponse.map(show => {
-                    const description = show.summary.replace(/<[^>]+>/g, '');
-                    const createdShow = new Show(show.name, show.id, show.image.original, description, show.rating);
-                    listOfAllShows.push(createdShow);
-                })
-                listOfAllShows.sort((a, b) => {
-                    a = a.rating.average;
-                    b = b.rating.average;
-                    return b - a;
-                })
-                const top50Shows = listOfAllShows.slice(0, 50);
-                localStorage.setItem("topShows", JSON.stringify(top50Shows))
-                return top50Shows;
+        return this.getAllShows()
+            .then(listOfAllShows => {
+                const listOf50 = this.filterTop50Shows(listOfAllShows);
+                localStorage.setItem("topShows", JSON.stringify(listOf50));
+                return listOf50
             })
     }
 
     getSeasonsAndCast(id) {
-        return fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`)
-            .then(response => {
-                return response.json();
-            })
-            .then(myResponse => {
-                const listOfActors = [];
-                const listOfSeasons = [];
-                const seasonsArray = myResponse._embedded.seasons;
-                const castArray = myResponse._embedded.cast;
-                seasonsArray.map(item => {
-                    const createdSeason = new Season(item.premiereDate, item.endDate, item.length);
-                    listOfSeasons.push(createdSeason);
-                })
-                castArray.map(item => {
-                    const createdActor = new Actor(item.person.name);
-                    listOfActors.push(createdActor);
-                })
-                const description = myResponse.summary.replace(/<[^>]+>/g, '');
-                const clickedShow = new Show(myResponse.name, myResponse.id, myResponse.image.original, description, myResponse.rating.average);
+        return httpService.getData(`${ALL_SHOWS_URL}/${id}?embed[]=seasons&embed[]=cast`)
+            .then(({
+                name,
+                id,
+                image,
+                summary,
+                rating,
+                _embedded
+            }) => {
+                const description = summary.replace(/<[^>]+>/g, '');
                 return {
-                    listOfActors,
-                    listOfSeasons,
-                    clickedShow
+                    listOfActors: _embedded.cast.map(item => new Actor(item.person.name)),
+                    listOfSeasons: _embedded.seasons.map(item => (
+                        new Season(item.premiereDate, item.endDate, item.length))),
+                    clickedShow: new Show(name, id, image.original, description, rating.average)
                 }
             })
 
     }
 
-    getAllShows() {
-        return fetch(shows)
-            .then(response => {
-                return response.json()
-            })
-            .then(myResponse => {
-                const listOfAllShows = [];
-                myResponse.map(show => {
-                    const description = show.summary.replace(/<[^>]+>/g, '');
-                    const createdShow = new Show(show.name, show.id, show.image.original, description, show.rating);
-                    listOfAllShows.push(createdShow);
-                })
-                return listOfAllShows;
-            })
-    }
+
 }
 
 

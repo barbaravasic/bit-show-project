@@ -24,14 +24,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader','postcss-loader', 'css-loader']
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpg|gif|jpeg)$/,
+        test:/\.(png|jpg|jpeg|gif|ico|svg)$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {}
+            loader: 'file-loader'
           }
         ]
       }
