@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#index{
+    background-image: url('https://i.pinimg.com/564x/58/d5/37/58d537989b544a8b3535da3b6d1d6f07.jpg');
+}

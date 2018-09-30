@@ -1,3 +1,13 @@
+.my-navbar{
+    height: 100px;
+    background-color: #2f3b58;
+}
+
+.my-brand{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 40px;
+}
+
 a:not([href]):not([tabindex]){
     color: white;
 }
@@ -7,23 +17,4 @@ a:not([href]):not([tabindex]){
     position: relative;
 }
 
-.search-dropdown {
-    display: block;
-    position: absolute;
-    top: 40px;
-    border: 1px solid grey;
-    z-index: 5;
-    padding: 25px;
-    background-color: white;
-    width: 96%;
-}
-
-.dropdown-ul{
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.dropdown-ul li a {
-    color: black;
-}
 

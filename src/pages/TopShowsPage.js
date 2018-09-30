@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { showServices } from '../services/ShowServices';
 import TopShowsList from '../components/TopShowsList';
 
-import './TopShowsPage.css';
-
 class TopShowsPage extends Component {
     constructor() {
         super();

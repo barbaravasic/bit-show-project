@@ -8,6 +8,8 @@ import ShowInfoPage from "./pages/ShowInfoPage";
 import Header from "./partials/Header";
 import Footer from "./partials/Footer";
 
+import './app.css'
+
 const App = () => {
   return (
     <React.Fragment>

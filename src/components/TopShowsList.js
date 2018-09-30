@@ -1,6 +1,8 @@
 import React from 'react';
 import TopShowsItem from './TopShowsItem';
 
+import './TopShowsList.css'
+
 const TopShowsList = (props) => {
     const { top50 } = props;
 
@@ -16,9 +18,9 @@ const TopShowsList = (props) => {
     return (
         <React.Fragment>
             <div className='row'>
-                <h1>Top 50 shows</h1>
+                <h2 className='main-title'>Top 50 shows</h2>
             </div>
-            <div className='row'>
+            <div className='row justify-content-center all-shows'>
                 {renderTop50Shows()}
             </div>
         </React.Fragment>

@@ -7,7 +7,7 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark my-navbar">
         <div className="container">
             <Link to='/' className="navbar-brand my-brand">BitShow</Link>
             <SearchShows />
