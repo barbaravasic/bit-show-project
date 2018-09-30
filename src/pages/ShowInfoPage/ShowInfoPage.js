@@ -45,7 +45,7 @@ class ShowInfoPage extends Component {
         const { seasons, clickedShow, actors } = this.state;
         return (
             <div className='container show-info-page'>
-                <div className='row'>
+                <div className='row justify-content-center'>
                     <div className='col-12 col-md-5 poster'>
                         <img src={clickedShow.posterUrl} id={clickedShow.id} className='info-img' />
                     </div>
