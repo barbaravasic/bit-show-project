@@ -2,9 +2,7 @@ import React from 'react';
 
 import './SeasonsList.css'
 
-const SeasonsList = ({seasons}) => {
-
-    return (
+const SeasonsList = ({seasons}) => (
         <div className='row'>
             <div className='col-12 seasons'>
                 <h4 className="">Seasons {seasons.length}</h4>
@@ -15,6 +13,5 @@ const SeasonsList = ({seasons}) => {
             </div>
         </div>
     );
-};
 
 export default SeasonsList;

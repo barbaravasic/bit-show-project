@@ -2,8 +2,7 @@ import React from 'react';
 
 import './ActorsList.css'
 
-const ActorsList = ({actors}) => {
-    return (
+const ActorsList = ({actors}) =>(
         <div className='row'>
             <div className='col-12 actors'>
                 <h4>Cast</h4>
@@ -13,6 +12,5 @@ const ActorsList = ({actors}) => {
             </div>
         </div>
     );
-};
 
 export default ActorsList;

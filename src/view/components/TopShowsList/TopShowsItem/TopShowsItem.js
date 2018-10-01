@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import './TopShowsItem.css'
 
 
-const TopShowsItem = (props) => {
-    const { id, posterUrl, name } = props.show;
+const TopShowsItem = ({show}) => {
+    const { id, posterUrl, name } = show;
     return (
         <div className='col-6 col-md-4 col-lg-3 show' id={id}>
             <Link to={`/shows/${id}`} >
